@@ -46,6 +46,7 @@ class Chat extends StatefulWidget {
     this.emojiEnlargementBehavior = EmojiEnlargementBehavior.multi,
     this.emptyState,
     this.fileMessageBuilder,
+    this.headers,
     this.groupMessagesThreshold = 60000,
     this.hideBackgroundOnEmojiMessages = true,
     this.imageGalleryOptions = const ImageGalleryOptions(
@@ -153,6 +154,9 @@ class Chat extends StatefulWidget {
   /// `emptyChatPlaceholder` and `emptyChatPlaceholderTextStyle` are ignored
   /// in this case.
   final Widget? emptyState;
+
+  /// See [Message.headers]
+  final Map<String, String>? headers;
 
   /// See [Message.fileMessageBuilder].
   final Widget Function(types.FileMessage, {required int messageWidth})?
@@ -514,6 +518,7 @@ class ChatState extends State<Chat> {
           customStatusBuilder: widget.customStatusBuilder,
           emojiEnlargementBehavior: widget.emojiEnlargementBehavior,
           fileMessageBuilder: widget.fileMessageBuilder,
+          headers: widget.headers,
           hideBackgroundOnEmojiMessages: widget.hideBackgroundOnEmojiMessages,
           imageMessageBuilder: widget.imageMessageBuilder,
           isTextMessageTextSelectable: widget.isTextMessageTextSelectable,
